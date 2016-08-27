@@ -62,8 +62,3 @@ function drawBucket(x, y) {
     context.fillStyle = "#000000";
     context.fill();
 }
-
-
-
-drawCatapult(10, 300, 75, 5);
-drawCatapult(460, 300, 75, 5);
