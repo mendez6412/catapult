@@ -13,16 +13,21 @@ class Catapult extends Entity {
         this.drawWheel(((this.x + this.width) - 10), ((this.y + this.height) + 10), 10, "#000000");
     }
 
-    update() {
+  update() {
+    if (background.x == 0) {
+      this.x = this.startingX;
+    } else if (this.id == 1) {
+      this.x = background.x;
+    } else if (this.id == 2) {
       if (background.moving == true) {
-        if (background.x == 0) {
-            this.x = this.startingX;
-        } else if (this.id == 1) {
-            this.x = background.x;
-        } else if (this.id == 2) {
-            this.x--;
+        if (background.direction) {
+          this.x++;
+        } else {
+          this.x--;
         }
-    }}
+      }
+    }
+  }
 
     pull() {
         console.log("key pressed down.")
