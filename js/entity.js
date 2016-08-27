@@ -18,7 +18,7 @@ class Entity {
     // Can't really have an x gravity but might simplify some things
     this.gravity = {
       x: options.gravity ? (options.gravity.x || 0) : 0,
-      y: options.gravity ? (options.gravity.y || 0) : 0
+      y: options.gravity ? (options.gravity.y || 0) : 5
     }
     this.friction = {
       x: options.friction ? (options.friction.x || 0) : 0,
