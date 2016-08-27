@@ -1,34 +1,27 @@
 var canvas = document.querySelector("#myCanvas");
 var context = canvas.getContext("2d");
-var player = new Player()
-var background = new Image()
+var background = new Background();
+var player = new Player();
+var catapult1 = new Catapult();
+var catapult2 = new Catapult();
+var camera = new Camera();
 
-background.src = 'images/backgroundtest.png'
-var x = 0
-
-function drawBackground() {
-    x--
-    if (-1 * x >  background.width - canvas.width) {
-      x = 0
-    }
-    var y = 0
-    context.drawImage(background, x, y);
-}
+var entities = [
+  background, player, camera, catapult1, catapult2
+];
 
 function clear() {
-  context.clearRect(0, 0, canvas.width, canvas.height)
+  context.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function update() {
-  player.update()
+  entities.forEach(entity => entity.update());
 }
 
 function render() {
   clear()
-  drawBackground()
-  player.render()
-  drawCatapult(10, 300, 75, 5);
-  drawCatapult(460, 300, 75, 5)
+
+  entities.forEach(entity => entity.render());
 }
 
 function tick() {
