@@ -1,11 +1,6 @@
-class Catapult {
-    constructor(canvas, context, x, y, width, height) {
-        this.canvas = canvas;
-        this.context = context;
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+class Catapult extends Entity {
+    constructor(options) {
+        super(options)
     }
 
     render() {
@@ -20,24 +15,24 @@ class Catapult {
     }
 
     drawBase() {
-        this.context.beginPath();
-        this.context.rect(this.x, this.y, this.width, this.height);
-        this.context.closePath();
+        context.beginPath();
+        context.rect(this.x, this.y, this.width, this.height);
+        context.closePath();
         this.fillContextColor();
     }
 
     drawArm() {
-        this.context.beginPath();
-        if (this.x > (this.canvas.width / 2)) {
-            this.context.rect(this.x, this.y, 5, -50);
+        context.beginPath();
+        if (this.x > (canvas.width / 2)) {
+            context.rect(this.x, this.y, 5, -50);
         } else {
-            this.context.rect((this.x + this.width), this.y, -5, -50);
+            context.rect((this.x + this.width), this.y, -5, -50);
         }
-        this.context.closePath();
+        context.closePath();
         this.fillContextColor();
 
         // Add a bucket to hold some projectiles
-        if (this.x > (this.canvas.width/2)) {
+        if (this.x > (canvas.width/2)) {
             this.drawBucket(this.x - 1, this.y - 60);
         } else {
             this.drawBucket((this.x + this.width) + 1, this.y - 60);
@@ -45,31 +40,31 @@ class Catapult {
     }
 
     drawBucket(x, y) {
-        this.context.beginPath();
-        if (x > (this.canvas.width / 2)){
-            this.context.arc(x, y, 10, Math.PI / 2, (3 * Math.PI) / 2, true);
+        context.beginPath();
+        if (x > (canvas.width / 2)){
+            context.arc(x, y, 10, Math.PI / 2, (3 * Math.PI) / 2, true);
         } else {
-            this.context.arc(x, y, 10, (3 * Math.PI) / 2, Math.PI / 2, true);
+            context.arc(x, y, 10, (3 * Math.PI) / 2, Math.PI / 2, true);
         }
-        this.context.closePath();
+        context.closePath();
 
-        this.context.fillStyle = "#000000";
-        this.context.fill();
+        context.fillStyle = "#000000";
+        context.fill();
     }
 
     drawWheel(x, y, radius, color) {
-        this.context.beginPath();
-        this.context.arc(x, y, radius, 0, 2 * Math.PI, true);
-        this.context.closePath();
+        context.beginPath();
+        context.arc(x, y, radius, 0, 2 * Math.PI, true);
+        context.closePath();
 
-        this.context.fillStyle = color;
-        this.context.fill();
+        context.fillStyle = color;
+        context.fill();
     }
 
     fillContextColor() {
-        this.context.lineWidth = 2;
-        this.context.fillStyle = "#000000";
-        this.context.fill();
-        this.context.stroke();
+        context.lineWidth = 2;
+        context.fillStyle = "#000000";
+        context.fill();
+        context.stroke();
     }
 }
