@@ -4,6 +4,11 @@ class Projectile extends Entity {
         this.radius = options.radius;
         this.color = options.color;
         this.startingPoint = options.x;
+        this.velocity = {
+          x: 20,
+          y: -20
+        }
+
     }
 
     render() {
@@ -17,7 +22,24 @@ class Projectile extends Entity {
         // } else {
         //     this.reset();
         // }
-        // super.update()
+        this.enforceBoundaries()
+        if (background.moving) {
+          super.update()
+        }
+    }
+
+    enforceBoundaries() {
+      if (this.x > canvas.width) {
+        this.x = canvas.width
+      }
+
+      if (this.x < 0) {
+        this.x = 0
+      }
+
+      if (this.y > canvas.height) {
+        this.y = canvas.height - 30
+      }
     }
 
     reset() {

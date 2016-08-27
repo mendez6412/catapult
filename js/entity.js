@@ -26,8 +26,10 @@ class Entity {
     }
   }
   update() {
-    this.x += (this.velocity.x * this.acceleration.x) + this.gravity.x
-    this.y += (this.velocity.y * this.acceleration.y) + this.gravity.y
+    this.velocity.x += this.acceleration.x + this.gravity.x
+    this.velocity.y += this.acceleration.y + this.gravity.y
+    this.x += this.velocity.y
+    this.y += this.velocity.y
   }
   render() {}
 }
