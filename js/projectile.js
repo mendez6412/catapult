@@ -5,7 +5,7 @@ class Projectile extends Entity {
         this.color = options.color;
         this.startingPoint = options.x;
         this.velocity = {
-          x: 20,
+          x: 70,
           y: -20
         }
 
