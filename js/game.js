@@ -1,7 +1,7 @@
 var canvas = document.querySelector("#myCanvas");
 var context = canvas.getContext("2d");
 var background = new Background();
-var player = new Player();
+// var player = new Player();
 var options1 = {
     x: 10,
     y: 310,
@@ -20,7 +20,7 @@ var camera = new Camera();
 var projectile = new Projectile({x: 85, y: 250, radius: 7, color: "#DC423F"});
 
 var entities = [
-  background, player, camera, projectile, catapult1, catapult2
+  background, camera, projectile, catapult1, catapult2
 ];
 
 window.addEventListener("mouseup", function(e) {

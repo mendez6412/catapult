@@ -17,6 +17,7 @@ class Projectile extends Entity {
         // } else {
         //     this.reset();
         // }
+        // super.update()
     }
 
     reset() {
