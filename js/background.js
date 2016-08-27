@@ -3,7 +3,7 @@ class Background {
     this.x = 0;
     this.y = 0;
     this.image = new Image()
-    this.image.src = 'images/backgroundtest.png';
+    this.image.src = 'images/background.png';
   }
 
   update() {
