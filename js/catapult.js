@@ -16,7 +16,7 @@ class Catapult {
     }
 
     update() {
-        
+
     }
 
     drawBase() {

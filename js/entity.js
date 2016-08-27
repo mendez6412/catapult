@@ -25,6 +25,9 @@ class Entity {
       y: options.friction ? (options.friction.y || 0) : 0
     }
   }
-  update() {}
+  update() {
+    this.x += (this.velocity.x * this.acceleration.x) + this.gravity.x
+    this.y += (this.velocity.y * this.acceleration.y) + this.gravity.y
+  }
   render() {}
 }
