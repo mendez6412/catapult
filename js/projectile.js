@@ -7,6 +7,7 @@ class Projectile extends Entity {
     }
 
     render() {
+      
         this.drawCircle(this.x, this.y, this.radius, this.color);
     }
 

@@ -7,7 +7,7 @@ class Background {
   }
 
   update() {
-    this.x--;
+    // this.x--;
     if (-1 * this.x >  this.image.width - canvas.width) {
       this.x = 0;
     }

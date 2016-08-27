@@ -18,8 +18,8 @@ class Catapult extends Entity {
             this.x = this.startingX;
         } else if (this.id == 1) {
             this.x = background.x;
-        } else if (this.id == 2) {
-            this.x--;
+        // } else if (this.id == 2) {
+        //     this.x--;
         }
     }
 
