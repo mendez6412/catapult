@@ -14,6 +14,7 @@ var options2 = {
     width: 75,
     height: 5
 }
+
 var catapult1 = new Catapult(options1);
 var catapult2 = new Catapult(options2);
 var camera = new Camera();
@@ -31,9 +32,9 @@ function update() {
   entities.forEach(entity => entity.update());
 }
 
+
 function render() {
   clear()
-
   entities.forEach(entity => entity.render());
 }
 

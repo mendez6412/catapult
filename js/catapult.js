@@ -11,7 +11,6 @@ class Catapult extends Entity {
     }
 
     update() {
-
     }
 
     drawBase() {
