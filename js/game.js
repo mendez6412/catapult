@@ -23,6 +23,9 @@ var entities = [
   background, player, camera, projectile, catapult1, catapult2
 ];
 
+window.addEventListener("mousedown", catapult1.pull(), false);
+window.addEventListener("mouseup", catapult1.release(), false);
+
 function clear() {
   context.clearRect(0, 0, canvas.width, canvas.height);
 }

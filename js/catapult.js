@@ -1,6 +1,8 @@
 class Catapult extends Entity {
     constructor(options) {
-        super(options)
+        super(options);
+        this.startingX = options.x;
+        this.startingY = options.y;
     }
 
     render() {
@@ -12,6 +14,20 @@ class Catapult extends Entity {
 
     update() {
 
+    }
+
+    pull() {
+        console.log("key pressed down.")
+        this.x -= 2;
+        this.y += 2;
+        this.render();
+    }
+
+    release() {
+        console.log("key released.")
+        this.x = this.startingX;
+        this.y = this.startingY;
+        this.render();
     }
 
     drawBase() {
