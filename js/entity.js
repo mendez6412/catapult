@@ -21,14 +21,16 @@ class Entity {
       y: options.gravity ? (options.gravity.y || 0) : 5
     }
     this.friction = {
-      x: options.friction ? (options.friction.x || 0) : 0,
+      x: options.friction ? (options.friction.x || 0) : 1,
       y: options.friction ? (options.friction.y || 0) : 0
     }
   }
   update() {
-    this.velocity.x += this.acceleration.x + this.gravity.x
+    if (this.velocity.x > 0) {
+      this.velocity.x += this.acceleration.x + this.gravity.x - this.friction.x
+      this.x += this.velocity.x
+    }
     this.velocity.y += this.acceleration.y + this.gravity.y
-    this.x += this.velocity.y
     this.y += this.velocity.y
   }
   render() {}
