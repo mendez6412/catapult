@@ -1,23 +1,40 @@
 class Projectile extends Entity {
-  constructor(options) {
-    super(options);
-    this.radius = options.radius;
-    this.color = options.color;
-    this.startingPoint = options.x;
-  }
+    constructor(options) {
+        super(options);
+        this.radius = options.radius;
+        this.color = options.color;
+        this.startingPoint = options.x;
+        this.velocity = {
+          x: 70,
+          y: -20
+        }
+
+    }
 
   render() {
     this.drawCircle(this.x, this.y, this.radius, this.color);
   }
 
-  update() {
-    // this.drawCircle(this.x, this.y, this.radius, this.color);
-    // if (this.x < 460) {
-    //   this.x += 5;
-    // } else {
-    //   this.reset();
-    // }
-  }
+    update() {
+
+        if (background.moving && this.y < 296) {
+          super.update()
+        } else if (background.moving) {
+          this.x--
+        }
+        this.enforceBoundaries()
+
+    }
+
+    enforceBoundaries() {
+      if (this.x > background.image.width && this.x != 85) {
+        this.x = background.image.width
+      }
+
+      if (this.y > canvas.height) {
+        this.y = canvas.height - 25
+      }
+    }
 
   reset() {
     this.x = this.startingPoint;
