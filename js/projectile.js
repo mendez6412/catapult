@@ -5,10 +5,9 @@ class Projectile extends Entity {
         this.color = options.color;
         this.startingPoint = options.x;
         this.velocity = {
-          x: 70,
-          y: -20
+          x: 50,
+          y: -40
         }
-
     }
 
   render() {
@@ -16,22 +15,18 @@ class Projectile extends Entity {
   }
 
     update() {
-
         if (background.moving && this.y < 296) {
           super.update()
-        } else if (background.moving) {
+        } else if (background.moving && !background.direction) {
           this.x--
+        } else if (background.moving && background.direction) {
+          this.x++
         }
         this.enforceBoundaries()
-
     }
 
     enforceBoundaries() {
-      if (this.x > background.image.width && this.x != 85) {
-        this.x = background.image.width
-      }
-
-      if (this.y > canvas.height) {
+      if (this.y > canvas.height - 25) {
         this.y = canvas.height - 25
       }
     }

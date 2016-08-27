@@ -1,7 +1,7 @@
 var canvas = document.querySelector("#myCanvas");
 var context = canvas.getContext("2d");
 var background = new Background();
-// var player = new Player();
+var playerOneTurn = true;
 var options1 = {
     x: 10,
     y: 310,
