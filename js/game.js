@@ -4,24 +4,28 @@ var background = new Background();
 var player = new Player();
 var options1 = {
     x: 10,
-    y: 300,
+    y: 310,
     width: 75,
     height: 5
 }
 var options2 = {
-    x: 460,
-    y: 300,
+    x: 1650 - 85,
+    y: 310,
     width: 75,
     height: 5
 }
-var catapult1 = new Catapult(options1);
-var catapult2 = new Catapult(options2);
+var catapult1 = new Catapult(options1, 1);
+var catapult2 = new Catapult(options2, 2);
+console.log(catapult2.x)
 var camera = new Camera();
-var projectile = new Projectile({x: 85, y: 240, radius: 7, color: "#DC423F"});
+var projectile = new Projectile({x: 85, y: 250, radius: 7, color: "#DC423F"});
 
 var entities = [
   background, player, camera, projectile, catapult1, catapult2
 ];
+
+window.addEventListener("mousedown", catapult1.pull(), false);
+window.addEventListener("mouseup", catapult1.release(), false);
 
 function clear() {
   context.clearRect(0, 0, canvas.width, canvas.height);
