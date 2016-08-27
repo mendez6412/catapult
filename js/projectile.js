@@ -18,15 +18,17 @@ class Projectile extends Entity {
     update() {
 
         if (background.moving && this.y < 296) {
-          console.log(this.y)
           super.update()
+        } else if (background.moving) {
+          this.x--
         }
         this.enforceBoundaries()
+
     }
 
     enforceBoundaries() {
-      if (this.x > canvas.width) {
-        this.x = canvas.width
+      if (this.x > background.image.width && this.x != 85) {
+        this.x = background.image.width
       }
 
       if (this.y > canvas.height) {
