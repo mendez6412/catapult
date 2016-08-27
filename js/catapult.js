@@ -1,64 +1,75 @@
-var canvas = document.querySelector("#myCanvas");
-var context = canvas.getContext("2d");
-
-function drawCatapult(x, y, width, height) {
-    // Base of the catapult
-    context.beginPath();
-    context.rect(x, y, width, height);
-    context.closePath();
-    fillContextColor();
-
-    // Arm of the catapult
-    drawArm(x, y, width);
-
-    // Add some wheels to our catapult
-    drawCircle((x + 10), ((y + height) + 10), 10);
-    drawCircle(((x + width) - 10), ((y + height) + 10), 10);
-}
-
-function fillContextColor() {
-    context.lineWidth = 2;
-    context.fillStyle = "#000000";
-    context.fill();
-    context.stroke();
-}
-
-function drawCircle(x, y, radius) {
-    context.beginPath();
-    context.arc(x, y, radius, 0, 2 * Math.PI, true);
-    context.closePath();
-
-    context.fillStyle = "#000000";
-    context.fill();
-}
-
-function drawArm(x, y, width) {
-    context.beginPath();
-    if (x > (canvas.width / 2)) {
-        context.rect(x, y, 5, -50);
-    } else {
-        context.rect((x + width), y, -5, -50);
+class Catapult {
+    constructor(canvas, context, x, y, width, height) {
+        this.canvas = canvas;
+        this.context = context;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
     }
-    context.closePath();
-    fillContextColor();
 
-    // Add a bucket to hold some projectiles
-    if (x > (canvas.width/2)) {
-        drawBucket(x - 1, y - 60);
-    } else {
-        drawBucket((x + width) + 1, y - 60);
+    render() {
+        this.drawBase();
+        this.drawArm();
+        this.drawWheel((this.x + 10), ((this.y + this.height) + 10), 10, "#000000");
+        this.drawWheel(((this.x + this.width) - 10), ((this.y + this.height) + 10), 10, "#000000");
     }
-}
 
-function drawBucket(x, y) {
-    context.beginPath();
-    if (x > (canvas.width / 2)){
-        context.arc(x, y, 10, Math.PI / 2, (3 * Math.PI) / 2, true);
-    } else {
-        context.arc(x, y, 10, (3 * Math.PI) / 2, Math.PI / 2, true);
+    update() {
+        
     }
-    context.closePath();
 
-    context.fillStyle = "#000000";
-    context.fill();
+    drawBase() {
+        this.context.beginPath();
+        this.context.rect(this.x, this.y, this.width, this.height);
+        this.context.closePath();
+        this.fillContextColor();
+    }
+
+    drawArm() {
+        this.context.beginPath();
+        if (this.x > (this.canvas.width / 2)) {
+            this.context.rect(this.x, this.y, 5, -50);
+        } else {
+            this.context.rect((this.x + this.width), this.y, -5, -50);
+        }
+        this.context.closePath();
+        this.fillContextColor();
+
+        // Add a bucket to hold some projectiles
+        if (this.x > (this.canvas.width/2)) {
+            this.drawBucket(this.x - 1, this.y - 60);
+        } else {
+            this.drawBucket((this.x + this.width) + 1, this.y - 60);
+        }
+    }
+
+    drawBucket(x, y) {
+        this.context.beginPath();
+        if (x > (this.canvas.width / 2)){
+            this.context.arc(x, y, 10, Math.PI / 2, (3 * Math.PI) / 2, true);
+        } else {
+            this.context.arc(x, y, 10, (3 * Math.PI) / 2, Math.PI / 2, true);
+        }
+        this.context.closePath();
+
+        this.context.fillStyle = "#000000";
+        this.context.fill();
+    }
+
+    drawWheel(x, y, radius, color) {
+        this.context.beginPath();
+        this.context.arc(x, y, radius, 0, 2 * Math.PI, true);
+        this.context.closePath();
+
+        this.context.fillStyle = color;
+        this.context.fill();
+    }
+
+    fillContextColor() {
+        this.context.lineWidth = 2;
+        this.context.fillStyle = "#000000";
+        this.context.fill();
+        this.context.stroke();
+    }
 }

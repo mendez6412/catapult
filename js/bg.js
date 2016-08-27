@@ -8,6 +8,9 @@
         var context = canvas.getContext('2d');
         var looping = false;
         var totalSeconds = 0;
+        var projectile = new Projectile(context, 85, 240, 7, "#DC423F");
+        var catapult1 = new Catapult(canvas, context, 10, 300, 75, 5);
+        var catapult2 = new Catapult(canvas, context, 460, 300, 75, 5);
 
         var img = new Image();
         img.onload = imageLoaded;
@@ -34,8 +37,11 @@
 
         function loop() {
             if (!looping) {
+                projectile.reset();
                 return;
             }
+
+            projectile.animate();
 
             requestAnimationFrame(loop);
 
@@ -59,8 +65,10 @@
             }
             context.restore();
 
-
-            drawCatapult(10, 300, 75, 5);
-            drawCatapult(460, 300, 75, 5);
+            projectile.render();
+            catapult1.render();
+            catapult2.render();
+            // drawCatapult(10, 300, 75, 5);
+            // drawCatapult(460, 300, 75, 5);
         }
     }());
