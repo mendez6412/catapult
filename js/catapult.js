@@ -1,17 +1,17 @@
 class Catapult extends Entity {
-    constructor(options, id) {
-        super(options);
-        this.startingX = options.x;
-        this.startingY = options.y;
-        this.id = id
-    }
+  constructor(options, id) {
+    super(options);
+    this.startingX = options.x;
+    this.startingY = options.y;
+    this.id = id
+  }
 
-    render() {
-        this.drawBase();
-        this.drawArm();
-        this.drawWheel((this.x + 10), ((this.y + this.height) + 10), 10, "#000000");
-        this.drawWheel(((this.x + this.width) - 10), ((this.y + this.height) + 10), 10, "#000000");
-    }
+  render() {
+    this.drawBase();
+    this.drawArm();
+    this.drawWheel((this.x + 10), ((this.y + this.height) + 10), 10, "#000000");
+    this.drawWheel(((this.x + this.width) - 10), ((this.y + this.height) + 10), 10, "#000000");
+  }
 
   update() {
     if (background.x == 0) {
@@ -29,71 +29,69 @@ class Catapult extends Entity {
     }
   }
 
-    pull() {
-        console.log("key pressed down.")
-        this.x -= 2;
-        this.y += 2;
-        this.render();
+  pull() {
+    this.x -= 2;
+    this.y += 2;
+    this.render();
+  }
+
+  release() {
+    this.x = this.startingX;
+    this.y = this.startingY;
+    this.render();
+  }
+
+  drawBase() {
+    context.beginPath();
+    context.rect(this.x, this.y, this.width, this.height);
+    context.closePath();
+    this.fillContextColor();
+  }
+
+  drawArm() {
+    context.beginPath();
+    if (this.x > (canvas.width / 2)) {
+      context.rect(this.x, this.y, 5, -50);
+    } else {
+      context.rect((this.x + this.width), this.y, -5, -50);
     }
+    context.closePath();
+    this.fillContextColor();
 
-    release() {
-        console.log("key released.")
-        this.x = this.startingX;
-        this.y = this.startingY;
-        this.render();
+    // Add a bucket to hold some projectiles
+    if (this.x > (canvas.width/2)) {
+      this.drawBucket(this.x - 1, this.y - 60);
+    } else {
+      this.drawBucket((this.x + this.width) + 1, this.y - 60);
     }
+  }
 
-    drawBase() {
-        context.beginPath();
-        context.rect(this.x, this.y, this.width, this.height);
-        context.closePath();
-        this.fillContextColor();
+  drawBucket(x, y) {
+    context.beginPath();
+    if (x > (canvas.width / 2)){
+      context.arc(x, y, 10, Math.PI / 2, (3 * Math.PI) / 2, true);
+    } else {
+      context.arc(x, y, 10, (3 * Math.PI) / 2, Math.PI / 2, true);
     }
+    context.closePath();
 
-    drawArm() {
-        context.beginPath();
-        if (this.x > (canvas.width / 2)) {
-            context.rect(this.x, this.y, 5, -50);
-        } else {
-            context.rect((this.x + this.width), this.y, -5, -50);
-        }
-        context.closePath();
-        this.fillContextColor();
+    context.fillStyle = "#000000";
+    context.fill();
+  }
 
-        // Add a bucket to hold some projectiles
-        if (this.x > (canvas.width/2)) {
-            this.drawBucket(this.x - 1, this.y - 60);
-        } else {
-            this.drawBucket((this.x + this.width) + 1, this.y - 60);
-        }
-    }
+  drawWheel(x, y, radius, color) {
+    context.beginPath();
+    context.arc(x, y, radius, 0, 2 * Math.PI, true);
+    context.closePath();
 
-    drawBucket(x, y) {
-        context.beginPath();
-        if (x > (canvas.width / 2)){
-            context.arc(x, y, 10, Math.PI / 2, (3 * Math.PI) / 2, true);
-        } else {
-            context.arc(x, y, 10, (3 * Math.PI) / 2, Math.PI / 2, true);
-        }
-        context.closePath();
+    context.fillStyle = color;
+    context.fill();
+  }
 
-        context.fillStyle = "#000000";
-        context.fill();
-    }
-
-    drawWheel(x, y, radius, color) {
-        context.beginPath();
-        context.arc(x, y, radius, 0, 2 * Math.PI, true);
-        context.closePath();
-
-        context.fillStyle = color;
-        context.fill();
-    }
-
-    fillContextColor() {
-        context.lineWidth = 2;
-        context.fillStyle = "#000000";
-        context.fill();
-        context.stroke();
-    }
+  fillContextColor() {
+    context.lineWidth = 2;
+    context.fillStyle = "#000000";
+    context.fill();
+    context.stroke();
+  }
 }
