@@ -8,7 +8,7 @@ class Catapult extends Entity {
 
   render() {
     this.drawBase();
-    this.drawArm();
+    this.drawArm(this.x, this.y);
     this.drawWheel((this.x + 10), ((this.y + this.height) + 10), 10, "#000000");
     this.drawWheel(((this.x + this.width) - 10), ((this.y + this.height) + 10), 10, "#000000");
   }
@@ -30,9 +30,7 @@ class Catapult extends Entity {
   }
 
   pull() {
-    this.x -= 2;
-    this.y += 2;
-    this.render();
+    this.drawArm(this.x -= 2, this.y += 2);
   }
 
   release() {
@@ -48,21 +46,21 @@ class Catapult extends Entity {
     this.fillContextColor();
   }
 
-  drawArm() {
+  drawArm(x, y) {
     context.beginPath();
-    if (this.x > (canvas.width / 2)) {
-      context.rect(this.x, this.y, 5, -50);
+    if (x > (canvas.width / 2)) {
+      context.rect(x, y, 5, -50);
     } else {
-      context.rect((this.x + this.width), this.y, -5, -50);
+      context.rect((x + this.width), y, -5, -50);
     }
     context.closePath();
     this.fillContextColor();
 
     // Add a bucket to hold some projectiles
-    if (this.x > (canvas.width/2)) {
-      this.drawBucket(this.x - 1, this.y - 60);
+    if (x > (canvas.width/2)) {
+      this.drawBucket(x - 1, y - 60);
     } else {
-      this.drawBucket((this.x + this.width) + 1, this.y - 60);
+      this.drawBucket((x + this.width) + 1, y - 60);
     }
   }
 

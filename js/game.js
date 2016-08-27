@@ -27,7 +27,13 @@ window.addEventListener("mouseup", function(e) {
   background.moving = true;
 })
 
-window.addEventListener("mouseup", catapult1.release(), false);
+window.addEventListener("keydown", function(e) {
+  catapult1.pull();
+});
+
+window.addEventListener("keyup", function(e) {
+  catapult1.release();
+});
 
 function clear() {
   context.clearRect(0, 0, canvas.width, canvas.height);
