@@ -3,7 +3,7 @@ var context = canvas.getContext("2d");
 var player = new Player()
 var background = new Image()
 
-background.src = 'images/bg_image.png'
+background.src = 'images/backgroundtest.png'
 var x = 0
 
 function drawBackground() {
