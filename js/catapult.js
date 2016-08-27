@@ -14,6 +14,7 @@ class Catapult extends Entity {
     }
 
     update() {
+      if (background.moving == true) {
         if (background.x == 0) {
             this.x = this.startingX;
         } else if (this.id == 1) {
@@ -21,7 +22,7 @@ class Catapult extends Entity {
         } else if (this.id == 2) {
             this.x--;
         }
-    }
+    }}
 
     pull() {
         console.log("key pressed down.")
