@@ -20,7 +20,6 @@ var catapult2 = new Catapult(options2, 2);
 var projectile1 = new Projectile({x: 85, y: 250, radius: 7, color: "#F00", id: 1});
 var projectile2 = new Projectile({x: 1630 - 85, y: 250, radius: 7, color: "#00F", id: 2});
 var camera = new Camera(0, 0, canvas.width, canvas.height, background.width, background.height);
-camera.follow(projectile1, canvas.width/2, canvas.height/2);
 
 var entities = [
   background, camera, projectile1, catapult1, catapult2
@@ -42,6 +41,13 @@ function clear() {
 }
 
 function update() {
+  if (playerOneTurn) {
+    camera.follow(projectile1, canvas.width/2, canvas.height/2);
+  } else {
+    camera.follow(projectile2, canvas.width/2, canvas.height/2)
+  }
+
+
   entities.forEach(entity => entity.update());
 }
 

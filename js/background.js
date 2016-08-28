@@ -12,10 +12,8 @@ class Background {
     if (this.moving == true) {
       if (this.direction) {
         this.x++
-        // console.log("this happened")
       } else {
         this.x--
-        // console.log("or this happened")
       }
     // if (-1 * this.x >  this.image.width - canvas.width) {
     //   this.x = 0;
