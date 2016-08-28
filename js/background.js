@@ -33,7 +33,12 @@ class Background {
     }
 
     this.y = 0;
-    if (projectile1.y == 325) {
+    if (projectile1.y == 325 && projectile1.id == 1) {
+      this.direction = true;
+      this.moving = false;
+      playerOneTurn = false; // Switch player to player 2
+    }
+    if (projectile1.y == 325 && projectile1.id == 2) {
       this.direction = true;
       this.moving = false;
       playerOneTurn = false; // Switch player to player 2

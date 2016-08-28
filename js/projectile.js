@@ -11,6 +11,7 @@ class Projectile extends Entity {
 
         }
         this.id = options.id
+        this.counter = 0
     }
 
   render() {
