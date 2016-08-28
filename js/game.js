@@ -75,3 +75,19 @@ function tick() {
 }
 
 tick()
+
+function angleValueKeyPress() {
+  var angle = document.getElementById("angle");
+}
+
+function powerValueKeyPress() {
+  var power = document.getElementById("power");
+}
+
+function launchButtonPress() {
+  var angle = document.getElementById("angle");
+  var power = document.getElementById("power");
+  var launch = document.getElementById("launch");
+  console.log("Angle: " + angle.value)
+  console.log("Power: " + power.value)
+}
