@@ -1,7 +1,8 @@
 var canvas = document.querySelector("#myCanvas");
 var context = canvas.getContext("2d");
 var background = new Background();
-// var player = new Player();
+var playerOneTurn = true;
+
 var options1 = {
     x: 10,
     y: 310,
@@ -14,13 +15,15 @@ var options2 = {
     width: 75,
     height: 5
 }
+
 var catapult1 = new Catapult(options1, 1);
 var catapult2 = new Catapult(options2, 2);
 var camera = new Camera();
-var projectile = new Projectile({x: 85, y: 250, radius: 7, color: "#DC423F"});
+var projectile1 = new Projectile({x: 85, y: 250, radius: 7, color: "#F00", id: 1});
+var projectile2 = new Projectile({x: 1630 - 85, y: 250, radius: 7, color: "#00F", id: 2});
 
 var entities = [
-  background, camera, projectile, catapult1, catapult2
+  background, camera, projectile1, projectile2, catapult1, catapult2
 ];
 
 window.addEventListener("mouseup", function(e) {
