@@ -28,10 +28,8 @@ class Background {
         this.moving = false;
       };
   }
-
       this.y = 0;
       if (projectile1.y == 325) {
-        console.log('you got here')
         this.direction = true;
         this.moving = false;
         playerOneTurn = false; // Switch player to player 2

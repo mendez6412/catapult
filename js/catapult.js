@@ -14,7 +14,7 @@ class Catapult extends Entity {
   }
 
   update() {
-    if (background.x == 0) {
+    if (background.x == 0 || !background.moving) {
       this.x = this.startingX;
     } else if (this.id == 1) {
       this.x = background.x;
