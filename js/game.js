@@ -22,7 +22,7 @@ var projectile2 = new Projectile({x: 1630 - 85, y: 250, radius: 7, color: "#00F"
 var camera = new Camera(0, 0, canvas.width, canvas.height, background.width, background.height);
 
 var entities = [
-  background, camera, projectile1, catapult1, catapult2
+  background, camera, projectile1, projectile2, catapult1, catapult2
 ];
 
 var FPS = 30;

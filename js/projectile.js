@@ -3,7 +3,8 @@ class Projectile extends Entity {
         super(options);
         this.radius = options.radius;
         this.color = options.color;
-        this.startingPoint = options.x;
+        this.startingX = options.x;
+        this.startingY = options.y;
         this.velocity = {
           x: 30,
           y: -20
@@ -20,6 +21,11 @@ class Projectile extends Entity {
 
 
     update() {
+      if (!background.moving) {
+        this.reset()
+        return
+      }
+
       if (playerOneTurn && this.id == 1) {
         if (background.moving && this.y < 296) {
           super.update()
@@ -53,7 +59,8 @@ class Projectile extends Entity {
     }
 
   reset() {
-    this.x = this.startingPoint;
+    this.x = this.startingX;
+    this.y = this.startingY;
   }
 
   drawCircle(x, y, radius, color) {
