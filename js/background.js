@@ -28,6 +28,13 @@ class Background {
         this.direction = false;
         this.moving = false;
         playerOneTurn = true;
+        // reset projectiles to original positions
+        projectile1.x = 85
+        projectile1.y = 250
+        projectile1.velocity = {x: 50, y: -40}
+        projectile2.x = 1630 - 85
+        projectile2.y = 250
+        projectile2.velocity = {x: 50, y: -40}
       };
     }
   }
