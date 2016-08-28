@@ -6,6 +6,7 @@ class Background {
     this.image.src = 'images/background.png';
     this.moving = false
     this.direction = false
+    this.counter = 0
   }
 
   update() {
@@ -34,14 +35,22 @@ class Background {
 
     this.y = 0;
     if (projectile1.y == 325 && projectile1.id == 1) {
-      this.direction = true;
-      this.moving = false;
-      playerOneTurn = false; // Switch player to player 2
+      projectile1.counter++
+      if (projectile1.counter > 40) {
+        projectile1.counter = 0
+        this.direction = true;
+        this.moving = false;
+        playerOneTurn = false; // Switch player to player 2
+      }
     }
     if (projectile1.y == 325 && projectile1.id == 2) {
-      this.direction = true;
-      this.moving = false;
-      playerOneTurn = false; // Switch player to player 2
+      projectile2.counter++
+        if (projectile2.counter > 40) {
+          projectile2.counter = 0
+          this.direction = true;
+          this.moving = false;
+          playerOneTurn = false; // Switch player to player 2
+        }
     }
     if (this.x == -(this.image.width - canvas.width)) {
       this.direction = true;
