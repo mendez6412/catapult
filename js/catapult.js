@@ -28,8 +28,8 @@ class Catapult extends Entity {
       }
     }
 
-    // this.x -= camera.xView
-    // this.y -= camera.yView
+    this.x -= camera.xView
+    this.y -= camera.yView
   }
 
   pull() {

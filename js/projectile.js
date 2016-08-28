@@ -13,14 +13,15 @@ class Projectile extends Entity {
     }
 
   render() {
-    this.drawCircle(this.x, this.y, this.radius, this.color);
-    // this.drawCircle(this.x - camera.xView, this.y - camera.yView, this.radius, this.color);
+    // this.drawCircle(this.x, this.y, this.radius, this.color);
+    this.drawCircle(this.x - camera.xView, this.y - camera.yView, this.radius, this.color);
 
   }
 
 
     update() {
       if (playerOneTurn && this.id == 1) {
+        console.log(this.velocity.y)
         if (background.moving && this.y < 296) {
           super.update()
 
