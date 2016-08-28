@@ -26,11 +26,14 @@ var entities = [
   background, camera, projectile1, projectile2, catapult1, catapult2
 ];
 
+var FPS = 30;
+var INTERVAL = 1000/FPS; // milliseconds
+var STEP = INTERVAL/1000 // seconds
+
 window.addEventListener("mouseup", function(e) {
   background.moving = true;
 })
 
-window.addEventListener("mouseup", catapult1.release(), false);
 
 function clear() {
   context.clearRect(0, 0, canvas.width, canvas.height);
