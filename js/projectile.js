@@ -12,6 +12,7 @@ class Projectile extends Entity {
         }
         this.id = options.id
         this.counter = 0
+        this.damage = 50
     }
 
   render() {
@@ -28,6 +29,11 @@ class Projectile extends Entity {
       }
 
       if (playerOneTurn && this.id == 1) {
+        if (this.isCollidedWith(catapult1)) {
+          catapult1.hit(this.damage);
+          console.log("Hit catapult1! Health: " + catapult1.health);
+        }
+
         if (background.moving && this.y < 296) {
           super.update()
 
@@ -40,6 +46,11 @@ class Projectile extends Entity {
         }
 
       } else if (playerOneTurn == false && this.id == 2) {
+        if (this.isCollidedWith(catapult2)) {
+          catapult2.hit(this.damage);
+          console.log("Hit catapult2! Health: " + catapult2.health);
+        }
+
         if (background.moving && this.y < 296) {
           super.update()
         } else if (background.moving && !background.direction) {
@@ -72,4 +83,5 @@ class Projectile extends Entity {
     context.fillStyle = color;
     context.fill();
   }
+
 }

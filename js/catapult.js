@@ -4,6 +4,7 @@ class Catapult extends Entity {
     this.startingX = options.x;
     this.startingY = options.y;
     this.id = id
+    this.health = 100
   }
 
   render() {
@@ -40,6 +41,10 @@ class Catapult extends Entity {
     this.x = this.startingX;
     this.y = this.startingY;
     this.render();
+  }
+
+  hit(damage) {
+    this.health -= damage
   }
 
   drawBase() {
