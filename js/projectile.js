@@ -21,7 +21,6 @@ class Projectile extends Entity {
 
     update() {
       if (playerOneTurn && this.id == 1) {
-        console.log(this.velocity.y)
         if (background.moving && this.y < 296) {
           super.update()
 
