@@ -21,6 +21,18 @@ class Background {
     //   this.x = 0;
     // }
 
+    if (playerOneTurn) {
+      if (projectile1.isCollidedWith(catapult1)) {
+        catapult1.hit(this.damage);
+        console.log("Hit catapult1! Health: " + catapult1.health);
+      }
+    } else {
+      if (projectile2.isCollidedWith(catapult2)) {
+        catapult2.hit(this.damage);
+        console.log("Hit catapult2! Health: " + catapult2.health);
+      }
+    }
+
       // Stop the background from moving and switch direction
       this.y = 0;
       if (this.x == -(this.image.width - canvas.width)) {

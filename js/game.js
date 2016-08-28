@@ -73,7 +73,6 @@ function tick() {
   render()
 
   requestAnimationFrame(tick)
-  console.log(catapult1.health + ', ' + catapult2.health)
 }
 
 tick()
