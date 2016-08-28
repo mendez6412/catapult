@@ -32,6 +32,6 @@ class Background {
 
 
   render() {
-    context.drawImage(this.image, this.x, this.y);
+    context.drawImage(this.image, this.x - camera.xView, this.y - camera.yView);
   }
 }

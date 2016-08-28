@@ -16,12 +16,18 @@ var options2 = {
 }
 var catapult1 = new Catapult(options1, 1);
 var catapult2 = new Catapult(options2, 2);
-var camera = new Camera();
 var projectile = new Projectile({x: 85, y: 250, radius: 7, color: "#DC423F"});
+var camera = new Camera(0, 0, canvas.width, canvas.height, background.width, background.height);
+camera.follow(projectile, canvas.width/2, canvas.height/2);
 
 var entities = [
   background, camera, projectile, catapult1, catapult2
 ];
+
+var FPS = 30;
+var INTERVAL = 1000/FPS; // milliseconds
+var STEP = INTERVAL/1000 // seconds
+
 
 window.addEventListener("mouseup", function(e) {
   background.moving = true;
@@ -37,11 +43,16 @@ function update() {
   entities.forEach(entity => entity.update());
 }
 
-
 function render() {
   clear()
+
   entities.forEach(entity => entity.render());
 }
+
+// function draw() {
+//   context.clearRect(0, 0, canvas.width, canvas.height);
+//   player.draw(context, camera.xView, camera.yView);
+// }
 
 function tick() {
   update()

@@ -5,30 +5,27 @@ class Projectile extends Entity {
         this.color = options.color;
         this.startingPoint = options.x;
         this.velocity = {
-          x: 70,
+          x: 30,
           y: -20
         }
 
     }
 
   render() {
-    this.drawCircle(this.x, this.y, this.radius, this.color);
+    this.drawCircle(this.x - camera.xView, this.y - camera.yView, this.radius, this.color);
   }
 
     update() {
 
         if (background.moving && this.y < 296) {
           super.update()
-        } else if (background.moving) {
-          this.x--
         }
         this.enforceBoundaries()
-
     }
 
     enforceBoundaries() {
-      if (this.x > background.image.width && this.x != 85) {
-        this.x = background.image.width
+      if (this.x > canvas.width) {
+        this.x = canvas.width
       }
 
       if (this.y > canvas.height) {
