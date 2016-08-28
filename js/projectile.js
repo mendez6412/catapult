@@ -3,22 +3,34 @@ class Projectile extends Entity {
         super(options);
         this.radius = options.radius;
         this.color = options.color;
-        this.startingPoint = options.x;
+        this.startingX = options.x;
+        this.startingY = options.y;
         this.velocity = {
-          x: 50,
-          y: -40
+          x: 30,
+          y: -20
+
         }
         this.id = options.id
+        this.counter = 0
     }
 
-    render() {
-      this.drawCircle(this.x, this.y, this.radius, this.color);
-    }
+  render() {
+    // this.drawCircle(this.x, this.y, this.radius, this.color);
+    this.drawCircle(this.x - camera.xView, this.y - camera.yView, this.radius, this.color);
+
+  }
+
 
     update() {
+      if (!background.moving) {
+        this.reset()
+        return
+      }
+
       if (playerOneTurn && this.id == 1) {
         if (background.moving && this.y < 296) {
           super.update()
+
         } else if (background.moving && !background.direction) {
           this.x--
           projectile2.x--
@@ -48,7 +60,8 @@ class Projectile extends Entity {
     }
 
   reset() {
-    this.x = this.startingPoint;
+    this.x = this.startingX;
+    this.y = this.startingY;
   }
 
   drawCircle(x, y, radius, color) {

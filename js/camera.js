@@ -27,12 +27,14 @@ class Camera {
   }
 
   update() {
+
     if(this.followed != null)
     {
       if(this.axis == AXIS.HORIZONTAL || this.axis == AXIS.BOTH)
       {
         if(this.followed.x - this.xView + this.xDeadZone > this.wView) {
           this.xView = this.followed.x - (this.wView - this.xDeadZone);
+
         } else if(this.followed.x  - this.xDeadZone < this.xView) {
           this.xView = this.followed.x  - this.xDeadZone;
         }
@@ -47,7 +49,9 @@ class Camera {
       }
 
     }
+
     this.viewportRect.set(this.xView, this.yView);
+
     // if(!this.viewportRect.within(this.worldRect))
     // {
     //   if(this.viewportRect.left < this.worldRect.left)
