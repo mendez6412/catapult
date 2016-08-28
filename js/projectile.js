@@ -8,21 +8,37 @@ class Projectile extends Entity {
           x: 50,
           y: -40
         }
+        this.id = options.id
     }
 
-  render() {
-    this.drawCircle(this.x, this.y, this.radius, this.color);
-  }
+    render() {
+      this.drawCircle(this.x, this.y, this.radius, this.color);
+    }
 
     update() {
+      if (playerOneTurn && this.id == 1) {
         if (background.moving && this.y < 296) {
           super.update()
         } else if (background.moving && !background.direction) {
           this.x--
+          projectile2.x--
+        } else if (background.moving && background.direction) {
+          // this.x++
+          // projectile2.x++
+        }
+
+      } else if (playerOneTurn == false && this.id == 2) {
+        if (background.moving && this.y < 296) {
+          super.update()
+        } else if (background.moving && !background.direction) {
+          // this.x--
+          // projectile1.x--
         } else if (background.moving && background.direction) {
           this.x++
+          projectile1.x++
         }
-        this.enforceBoundaries()
+      }
+      this.enforceBoundaries()
     }
 
     enforceBoundaries() {

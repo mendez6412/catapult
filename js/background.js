@@ -22,10 +22,12 @@ class Background {
       if (this.x == -(this.image.width - canvas.width)) {
         this.direction = true;
         this.moving = false;
+        playerOneTurn = false; // Switch player to player 2
       };
       if (this.x == 0) {
         this.direction = false;
         this.moving = false;
+        playerOneTurn = true;
       };
     }
   }

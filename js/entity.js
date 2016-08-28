@@ -26,12 +26,22 @@ class Entity {
     }
   }
   update() {
-    if (this.velocity.x > 0) {
-      this.velocity.x += this.acceleration.x + this.gravity.x - this.friction.x
-      this.x += this.velocity.x
+    if (playerOneTurn) {
+      if (this.velocity.x > 0) {
+        this.velocity.x += this.acceleration.x + this.gravity.x - this.friction.x
+        this.x += this.velocity.x
+      }
+      this.velocity.y += this.acceleration.y + this.gravity.y
+      this.y += this.velocity.y
+    } else {
+      // FOR PLAYER 2, BALL MUST MOVE TO THE LEFT
+      if (this.velocity.x > 0) {
+        this.velocity.x += this.acceleration.x + this.gravity.x - this.friction.x
+        this.x -= this.velocity.x
+      }
+      this.velocity.y += this.acceleration.y + this.gravity.y
+      this.y += this.velocity.y
     }
-    this.velocity.y += this.acceleration.y + this.gravity.y
-    this.y += this.velocity.y
   }
   render() {}
 }
