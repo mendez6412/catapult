@@ -10,7 +10,7 @@ var options1 = {
     height: 5
 }
 var options2 = {
-    x: 1650 - 290,
+    x: 1610 - 290,
     y: 310,
     width: 75,
     height: 5
@@ -19,7 +19,7 @@ var catapult1 = new Catapult(options1, 1);
 var catapult2 = new Catapult(options2, 2);
 
 var projectile1 = new Projectile({x: 275, y: 250, radius: 7, color: "#F00", id: 1});
-var projectile2 = new Projectile({x: 1630 - 275, y: 250, radius: 7, color: "#00F", id: 2});
+var projectile2 = new Projectile({x: 1590 - 275, y: 250, radius: 7, color: "#00F", id: 2});
 var camera = new Camera(0, 0, canvas.width, canvas.height, background.width, background.height);
 
 var entities = [
