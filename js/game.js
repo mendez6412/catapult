@@ -32,9 +32,10 @@ var INTERVAL = 1000/FPS; // milliseconds
 var STEP = INTERVAL/1000 // seconds
 
 
-window.addEventListener("mouseup", function(e) {
-  background.moving = true;
-})
+// window.addEventListener("mouseup", function(e) {
+//   background.moving = true;
+// })
+
 
 function clear() {
   context.clearRect(0, 0, canvas.width, canvas.height);
@@ -72,6 +73,28 @@ function tick() {
   render()
 
   requestAnimationFrame(tick)
+  console.log(catapult1.health + ', ' + catapult2.health)
 }
 
 tick()
+
+function angleValueKeyPress() {
+  var angle = document.getElementById("angle");
+}
+
+function powerValueKeyPress() {
+  var power = document.getElementById("power");
+}
+
+function launchButtonPress() {
+  var angle = document.getElementById("angle");
+  var power = document.getElementById("power");
+  var launch = document.getElementById("launch");
+
+  var velocity_x = power.value * Math.cos(angle.value * (Math.PI/180))
+  var velocity_y = power.value * Math.sin(angle.value * (Math.PI/180))
+
+  projectile1.velocity = {x: velocity_x, y: -velocity_y}
+  projectile2.velocity = {x: velocity_x, y: -velocity_y}
+  background.moving = true
+}

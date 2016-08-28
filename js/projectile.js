@@ -6,8 +6,8 @@ class Projectile extends Entity {
         this.startingX = options.x;
         this.startingY = options.y;
         this.velocity = {
-          x: 30,
-          y: -20
+          x: 100,
+          y: -50
 
         }
         this.id = options.id

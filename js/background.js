@@ -64,10 +64,17 @@ class Background {
       // reset projectiles to original positions
       projectile1.x = 85
       projectile1.y = 250
-      projectile1.velocity = {x: 50, y: -40}
+      // FIX PROJECTILE VELOCITY RESET
+      // projectile1.velocity =  {x: 50, y: -40}
+      var velocity_x = power.value * Math.cos(angle.value * (Math.PI/180))
+      var velocity_y = power.value * Math.sin(angle.value * (Math.PI/180))
+      projectile1.velocity = {x: velocity_x, y: velocity_y}
       projectile2.x = 1630 - 85
       projectile2.y = 250
-      projectile2.velocity = {x: 50, y: -40}
+      // projectile2.velocity = {x: 50, y: -40}
+      var velocity_x = power.value * Math.cos(angle.value * (Math.PI/180))
+      var velocity_y = power.value * Math.sin(angle.value * (Math.PI/180))
+      projectile2.velocity = {x: velocity_x, y: velocity_y}
     };
   }
 
